@@ -1,0 +1,21 @@
+# ClipMitra backend — Python 3.12 (MediaPipe / CTranslate2 have no 3.14 wheels)
+
+# --- API ---
+fastapi>=0.115
+uvicorn[standard]>=0.30
+python-multipart>=0.0.9
+pydantic-settings>=2.4
+httpx>=0.27            # Ollama client + tests
+
+# --- AI / media ---
+faster-whisper>=1.1    # CTranslate2 backend
+nvidia-cublas-cu12     # CUDA 12 runtime libs for CTranslate2 on Windows
+nvidia-cudnn-cu12>=9,<10
+mediapipe>=0.10.14     # Phase 3: face landmarker
+yt-dlp[default]>=2026.11.23  # "Paste video link" (YouTube needs a JS runtime: Deno or Node)
+opencv-python-headless>=4.10
+numpy<2.3
+
+# --- Dev ---
+pytest>=8
+psutil>=6              # Phase 5 resource measurement (scripts/phase5_matrix.py)

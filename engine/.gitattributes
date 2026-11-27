@@ -1,0 +1,5 @@
+# Normalise line endings in the repo; check out with the platform's native endings.
+* text=auto
+*.ps1 text eol=crlf
+*.ttf binary
+*.task binary
