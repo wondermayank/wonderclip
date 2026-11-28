@@ -20,7 +20,7 @@ from app.services.translit import romanize
 from app.services.transcribe import Cancelled, PipelineError, transcribe
 from app.services.uploads import upload_path
 
-log = logging.getLogger("clipmitra.worker")
+log = logging.getLogger("wonderclip.worker")
 
 # (key, label, weight in overall progress, implemented?)
 STAGES: list[tuple[str, str, float, bool]] = [
@@ -66,7 +66,7 @@ class Worker:
     def __init__(self, db: Database) -> None:
         self.db = db
         self.q: queue.Queue[str] = queue.Queue()
-        self._thread = threading.Thread(target=self._loop, name="clipmitra-worker", daemon=True)
+        self._thread = threading.Thread(target=self._loop, name="wonderclip-worker", daemon=True)
         self._stop = threading.Event()
 
     # ------------------------------------------------------------ lifecycle

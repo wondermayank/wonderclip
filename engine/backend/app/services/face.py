@@ -19,7 +19,7 @@ import numpy as np
 
 from app.config import get_settings
 
-log = logging.getLogger("clipmitra.face")
+log = logging.getLogger("wonderclip.face")
 
 TARGET_AR = 9 / 16
 

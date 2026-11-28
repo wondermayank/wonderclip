@@ -6,7 +6,7 @@
 
   What it does (safe to run again to update; your videos and clips are kept):
     1. Installs FFmpeg, Ollama, Deno (for YouTube links) and uv with winget (skips what you have)
-    2. Downloads Wonder Clips into %LOCALAPPDATA%\ClipMitra\app
+    2. Downloads Wonder Clips into %LOCALAPPDATA%\WonderClip\app
     3. Creates a Python 3.12 environment and installs the engine's packages
     4. Downloads the AI models: Qwen3-4B (Ollama, ~2.5 GB), Whisper large-v3-turbo (~1.6 GB),
        MediaPipe face landmarker (~4 MB)
@@ -15,11 +15,11 @@
   Everything runs on your computer. Nothing is uploaded anywhere.
 #>
 param(
-  [string]$InstallRoot = (Join-Path $env:LOCALAPPDATA "ClipMitra"),
+  [string]$InstallRoot = (Join-Path $env:LOCALAPPDATA "WonderClip"),
   [string]$Source = "https://github.com/wondermayank/wonderclip/archive/refs/heads/main.zip",  # or a local .zip/folder
   [switch]$SkipModels,      # tests: don't download the large models
   [switch]$NoShortcuts,
-  [switch]$FromSetup        # run by ClipMitra-Setup.exe: keep the window open on errors
+  [switch]$FromSetup        # run by WonderClip-Setup.exe: keep the window open on errors
 )
 $ErrorActionPreference = "Stop"
 $Host.UI.RawUI.WindowTitle = "Installing Wonder Clips"
@@ -114,7 +114,7 @@ Remove-Item -Recurse -Force $staging -ErrorAction SilentlyContinue
 if (Test-Path $Source -PathType Container) {
   Copy-Item -Recurse $Source $staging
 } else {
-  $zip = Join-Path $InstallRoot "clipmitra.zip"
+  $zip = Join-Path $InstallRoot "wonderclip.zip"
   if (Test-Path $Source -PathType Leaf) { Copy-Item $Source $zip } else { Invoke-WebRequest $Source -OutFile $zip }
   Expand-Archive $zip (Join-Path $InstallRoot "_unzip") -Force
   $unz = (Get-ChildItem (Join-Path $InstallRoot "_unzip") -Directory | Select-Object -First 1).FullName
@@ -132,11 +132,11 @@ Ok "app: $app"
 # Data lives outside the app folder so updates never touch your videos, clips or models.
 $envFile = Join-Path $app "backend\.env"
 @"
-CLIPMITRA_UPLOAD_DIR=$data\uploads
-CLIPMITRA_OUTPUT_DIR=$data\outputs
-CLIPMITRA_TEMP_DIR=$data\temp
-CLIPMITRA_MODEL_DIR=$data\models
-CLIPMITRA_DB_PATH=$data\clipmitra.db
+WONDERCLIP_UPLOAD_DIR=$data\uploads
+WONDERCLIP_OUTPUT_DIR=$data\outputs
+WONDERCLIP_TEMP_DIR=$data\temp
+WONDERCLIP_MODEL_DIR=$data\models
+WONDERCLIP_DB_PATH=$data\wonderclip.db
 "@ | Set-Content -Encoding ascii $envFile
 
 # ---------------------------------------------------------------- 3. python
@@ -173,7 +173,7 @@ if ($SkipModels) {
 }
 
 # ---------------------------------------------------------------- 5. shortcuts
-$start = Join-Path $app "scripts\start_clipmitra.ps1"
+$start = Join-Path $app "scripts\start_wonderclip.ps1"
 if (-not $NoShortcuts) {
   Step "Adding Wonder Clips shortcuts"
   $ws = New-Object -ComObject WScript.Shell

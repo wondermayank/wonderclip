@@ -84,7 +84,7 @@ def test_word_edits_change_text_never_timing():
 def test_fonts_whitelist(client):
     assert client.get("/api/fonts/Poppins-Bold.ttf").status_code == 200
     assert client.get("/api/fonts/..%2Fconfig.py").status_code == 404
-    assert client.get("/api/fonts/clipmitra.db").status_code == 404
+    assert client.get("/api/fonts/wonderclip.db").status_code == 404
 
 
 def test_export_zip(ready_clip):
@@ -92,7 +92,7 @@ def test_export_zip(ready_clip):
     r = client.get(f"/api/jobs/{jid}/export.zip")
     assert r.status_code == 200 and r.headers["content-type"] == "application/zip"
     names = zipfile.ZipFile(BytesIO(r.content)).namelist()
-    assert names == ["clipmitra-1-t.mp4"]
+    assert names == ["wonderclip-1-t.mp4"]
 
 
 def test_cors_preflight_allows_put_from_frontend(client):

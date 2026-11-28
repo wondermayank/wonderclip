@@ -10,7 +10,7 @@ import httpx
 from app.config import get_settings
 from app.services.transcribe import PipelineError
 
-log = logging.getLogger("clipmitra.llm")
+log = logging.getLogger("wonderclip.llm")
 
 _OFFLINE = PipelineError("llm_unavailable",
                          "The local AI (Ollama) isn't running. Start Ollama, then press Retry.")

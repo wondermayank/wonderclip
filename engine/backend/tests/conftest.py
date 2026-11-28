@@ -15,10 +15,10 @@ def tmp_media(tmp_path_factory) -> Path:
 def settings_env(tmp_path, monkeypatch):
     """Isolated dirs + DB per test; worker off (API tests must not need a GPU)."""
     for k, sub in [("UPLOAD_DIR", "u"), ("TEMP_DIR", "t"), ("OUTPUT_DIR", "o"), ("MODEL_DIR", "m")]:
-        monkeypatch.setenv(f"CLIPMITRA_{k}", str(tmp_path / sub))
-    monkeypatch.setenv("CLIPMITRA_DB_PATH", str(tmp_path / "db" / "t.db"))
-    monkeypatch.setenv("CLIPMITRA_MAX_DURATION_SECONDS", "10")
-    monkeypatch.setenv("CLIPMITRA_WORKER_ENABLED", "false")
+        monkeypatch.setenv(f"WONDERCLIP_{k}", str(tmp_path / sub))
+    monkeypatch.setenv("WONDERCLIP_DB_PATH", str(tmp_path / "db" / "t.db"))
+    monkeypatch.setenv("WONDERCLIP_MAX_DURATION_SECONDS", "10")
+    monkeypatch.setenv("WONDERCLIP_WORKER_ENABLED", "false")
     from app.config import get_settings
     get_settings.cache_clear()
     yield

@@ -1,4 +1,4 @@
-# ClipMitra backend — Python 3.12 (MediaPipe / CTranslate2 have no 3.14 wheels)
+# WonderClip backend — Python 3.12 (MediaPipe / CTranslate2 have no 3.14 wheels)
 
 # --- API ---
 fastapi>=0.115

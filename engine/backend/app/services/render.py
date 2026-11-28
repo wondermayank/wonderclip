@@ -10,7 +10,7 @@ from app.services.face import Reframe
 from app.services.media import MediaError, make_thumbnail, probe_video
 from app.services.transcribe import PipelineError
 
-log = logging.getLogger("clipmitra.render")
+log = logging.getLogger("wonderclip.render")
 
 NVENC = ["-c:v", "h264_nvenc", "-preset", "p5", "-rc", "vbr", "-cq", "21", "-b:v", "0"]
 X264 = ["-c:v", "libx264", "-preset", "veryfast", "-crf", "20"]

@@ -1,4 +1,4 @@
-"""Application settings. Override with env vars prefixed CLIPMITRA_ or backend/.env."""
+"""Application settings. Override with env vars prefixed WONDERCLIP_ or backend/.env."""
 from __future__ import annotations
 
 import shutil
@@ -12,7 +12,7 @@ BACKEND_DIR = Path(__file__).resolve().parent.parent
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
-        env_prefix="CLIPMITRA_", env_file=BACKEND_DIR / ".env", extra="ignore"
+        env_prefix="WONDERCLIP_", env_file=BACKEND_DIR / ".env", extra="ignore"
     )
 
     # --- storage ---
@@ -20,7 +20,7 @@ class Settings(BaseSettings):
     output_dir: Path = BACKEND_DIR / "outputs"
     temp_dir: Path = BACKEND_DIR / "temp"
     model_dir: Path = BACKEND_DIR / "models"
-    db_path: Path = BACKEND_DIR / "data" / "clipmitra.db"
+    db_path: Path = BACKEND_DIR / "data" / "wonderclip.db"
     retention_hours: float = 72.0
 
     # --- upload limits ---

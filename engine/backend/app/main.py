@@ -18,7 +18,7 @@ from app.services.fetch import FetchWorker
 from app.workers.pipeline import Worker, sweep_jobs
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
-log = logging.getLogger("clipmitra")
+log = logging.getLogger("wonderclip")
 
 
 async def _retention_loop(app: FastAPI) -> None:

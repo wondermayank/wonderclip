@@ -21,7 +21,7 @@ from app.models.db import Database
 from app.services.media import MediaError
 from app.services.uploads import finalize_file, safe_display_name, sha256_file
 
-log = logging.getLogger("clipmitra.fetch")
+log = logging.getLogger("wonderclip.fetch")
 
 # <=1080p; prefer H.264 + AAC so no re-encode is needed; any format as last resort (merged to MP4)
 FORMAT = ("bv*[height<=1080][vcodec^=avc1]+ba[ext=m4a]/bv*[height<=1080]+ba/"
@@ -160,7 +160,7 @@ class FetchWorker:
     def __init__(self, db: Database) -> None:
         self.db = db
         self.q: queue.Queue[str] = queue.Queue()
-        self._thread = threading.Thread(target=self._loop, name="clipmitra-fetch", daemon=True)
+        self._thread = threading.Thread(target=self._loop, name="wonderclip-fetch", daemon=True)
 
     def start(self) -> None:
         for f in self.db.pending_fetches():  # interrupted by a restart: start again

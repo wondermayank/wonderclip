@@ -28,7 +28,7 @@ const GROUPS: { title: string; items: QA[] }[] = [
       { q: "How long can the video be?", a: <>Up to 30 minutes. Wonder Clips finds the best moments and makes up to 8 clips with captions, reframed to 9:16.</> },
       { q: "Can I paste a YouTube or Instagram link?", a: <>Yes. Your computer downloads the video directly from that platform. Only use videos you have the right to use.</> },
       { q: "The page says the engine is not running.", a: <>Start the engine from the <b>Wonder Clips</b> icon on your Desktop, allow Local network access in your browser and reload this page.</> },
-      { q: "How do I remove it?", a: <>Delete the folder <code>%LOCALAPPDATA%\ClipMitra</code> and the Wonder Clips shortcuts on your Desktop and Start menu.</> },
+      { q: "How do I remove it?", a: <>Delete the folder <code>%LOCALAPPDATA%\WonderClip</code> and the Wonder Clips shortcuts on your Desktop and Start menu.</> },
     ],
   },
   {

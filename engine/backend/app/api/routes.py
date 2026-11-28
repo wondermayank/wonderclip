@@ -253,7 +253,7 @@ def _clip_filename(c: dict) -> str:
     # Keep letters, digits and combining marks (Devanagari vowel signs) so Hindi titles survive.
     slug = "".join(ch if ch.isalnum() or unicodedata.category(ch)[0] == "M" else "-" for ch in c["title"].lower())
     slug = re.sub(r"-+", "-", slug).strip("-")[:50] or "clip"
-    return f"clipmitra-{c['idx'] + 1}-{slug}.mp4"
+    return f"wonderclip-{c['idx'] + 1}-{slug}.mp4"
 
 
 # ------------------------------------------------------------------ editor
@@ -382,5 +382,5 @@ def export_zip(job_id: str, request: Request):
             z.write(clip_file(job_id, c["idx"]), arcname=_clip_filename(c))
     up = db.get_upload(job["upload_id"])
     base = re.sub(r"[^\w\-]+", "-", Path(up["filename"]).stem if up else "clips").strip("-")[:40] or "clips"
-    return FileResponse(tmp, media_type="application/zip", filename=f"{base}-clipmitra.zip",
+    return FileResponse(tmp, media_type="application/zip", filename=f"{base}-wonderclip.zip",
                         background=BackgroundTask(tmp.unlink, missing_ok=True))

@@ -1,0 +1,10 @@
+Wonder Clips
+Copyright 2026 Mayank Shrivastava (Wondermayank)
+https://wondermayank.in/
+https://github.com/wondermayank/wonderclip
+
+This product includes software developed by Wondermayank.
+
+Third-party tools used by the engine (each keeps its own license):
+- FFmpeg, faster-whisper, MediaPipe, Ollama (Qwen3 models), yt-dlp
+- Next.js, React, Tailwind CSS, FastAPI

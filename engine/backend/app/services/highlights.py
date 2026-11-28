@@ -14,7 +14,7 @@ from app.config import get_settings
 from app.services import llm
 from app.services.transcribe import PipelineError
 
-log = logging.getLogger("clipmitra.highlights")
+log = logging.getLogger("wonderclip.highlights")
 
 _END = re.compile(r"[.?!…।]['\")\]]*$")
 _NO_SPACE_BEFORE = re.compile(r"^(?:[,.;:!?%)\]}'’…]|-(?=\w)|n't\b)")

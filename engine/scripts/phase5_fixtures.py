@@ -43,7 +43,7 @@ def speak(text: str, wav: Path, voice: str = "Microsoft David Desktop", rate: in
 
 
 def reel() -> Path:
-    db = BACKEND / "data" / "clipmitra.db"
+    db = BACKEND / "data" / "wonderclip.db"
     import sqlite3
     row = sqlite3.connect(db).execute(
         "select id, ext from uploads where filename like 'my reel%' or filename like '%reel%' limit 1").fetchone()

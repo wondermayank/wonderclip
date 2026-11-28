@@ -11,7 +11,7 @@ from app.services.audio import SAMPLE_RATE, load_audio
 from app.services.system import gpu_info
 from app.utils.cuda import register_cuda_dlls
 
-log = logging.getLogger("clipmitra.transcribe")
+log = logging.getLogger("wonderclip.transcribe")
 
 
 class PipelineError(Exception):
